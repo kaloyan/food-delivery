@@ -7,9 +7,10 @@ import { HeaderComponent } from './components/partials/header/header.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { RatingModule } from 'ng-starrating';
 import { SearchboxComponent } from './components/partials/searchbox/searchbox.component';
+import { TagsComponent } from './components/partials/tags/tags.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchboxComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchboxComponent, TagsComponent],
   imports: [BrowserModule, AppRoutingModule, RatingModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
     actvatedRoute.params.subscribe((params) => {
       if (params['query']) {
         this.foods = this.foodService.searchFood(params['query']);
+      } else if (params['tag']) {
+        this.foods = this.foodService.getFoodByTag(params['tag']);
       } else {
         this.foods = foodService.getAll();
       }

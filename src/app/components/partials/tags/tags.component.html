@@ -1,0 +1,20 @@
+<div class="container py-3">
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group list-group-horizontal justify-content-center">
+        <li
+          *ngFor="let tag of tags"
+          (click)="getTag(tag.name)"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">{{ tag.name }}</div>
+          </div>
+          <span class="badge bg-primary rounded-pill mx-2">
+            {{ tag.count }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
