@@ -1,3 +1,5 @@
+<app-searchbox></app-searchbox>
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -34,17 +36,15 @@
               <span *ngFor="let origin of food.origins" class="origins">
                 {{ origin }}
               </span>
-
-              <div>
-                Time: <i class="fa-solid fa-clock"></i> {{ food.cookTime }}
-              </div>
-
-              <div class="price">Price: {{ food.price | currency }}</div>
             </div>
 
-            <!-- <div class="card-footer">
+            <div class="card-footer d-flex justify-content-between">
+              <span>
+                Time: <i class="fa-solid fa-clock"></i> {{ food.cookTime }}
+              </span>
 
-            </div> -->
+              <span class="price">Price: {{ food.price | currency }}</span>
+            </div>
           </div>
         </li>
       </ul>

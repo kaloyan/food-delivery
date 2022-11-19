@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form (submit)="doSubmit($event)" class="d-flex" role="search">
+        <input
+          #s
+          (keyup.enter)="doSearch(s.value)"
+          [value]="query"
+          class="form-control me-2"
+          type="search"
+          placeholder="Search food"
+          aria-label="Search"
+        />
+        <button
+          (click)="doSearch(s.value)"
+          class="btn btn-outline-success"
+          type="button"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

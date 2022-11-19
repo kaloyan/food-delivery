@@ -11,4 +11,11 @@ export class FoodService {
   getAll(): Food[] {
     return sample_food;
   }
+
+  searchFood(query: string): Food[] {
+    const result = this.getAll().filter((food) =>
+      food.name.toLowerCase().includes(query.toLowerCase())
+    );
+    return result;
+  }
 }
