@@ -4,6 +4,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <app-not-found
+        [isVisible]="!foods || !foods.length"
+        resetText="Reset search"
+      ></app-not-found>
+
       <ul class="my-4">
         <li *ngFor="let food of foods" class="border-light">
           <a href="" routerLink="/food/{{ food.id }}">

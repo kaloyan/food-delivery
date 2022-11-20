@@ -10,9 +10,10 @@ import { SearchboxComponent } from './components/partials/searchbox/searchbox.co
 import { TagsComponent } from './components/partials/tags/tags.component';
 import { FoodDetailsComponent } from './components/pages/food-details/food-details.component';
 import { CartComponent } from './components/pages/cart/cart.component';
+import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchboxComponent, TagsComponent, FoodDetailsComponent, CartComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchboxComponent, TagsComponent, FoodDetailsComponent, CartComponent, NotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, RatingModule],
   providers: [],
   bootstrap: [AppComponent],

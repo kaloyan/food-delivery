@@ -1,0 +1,7 @@
+<div *ngIf="isVisible" class="row">
+  <div class="col my-5 py-5 d-flex flex-column align-items-center gap-3">
+    {{ message }}
+
+    <a [routerLink]="resetRoute">{{ resetText }}</a>
+  </div>
+</div>

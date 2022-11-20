@@ -1,9 +1,15 @@
 <div class="container">
-  <div class="rod">
+  <div class="row">
     <div class="col">
       <h1>Cart Page</h1>
     </div>
   </div>
+
+  <app-not-found
+    [isVisible]="!cart || !cart.items.length"
+    message="Cart is empty!"
+    resetText="Go to Homepage"
+  ></app-not-found>
 
   <div class="row">
     <div class="col-8">
@@ -27,9 +33,8 @@
             </div>
 
             <div class="col">
-              {{ item.count }}
               <select
-                class="form-select form-select-sm"
+                class="form-select"
                 #quantity
                 aria-label="Quantity"
                 [value]="item.count"
@@ -60,7 +65,7 @@
       </ul>
     </div>
 
-    <div class="col-4">
+    <div class="col-4" *ngIf="cart && cart.items.length > 0">
       <h2>
         Items count: <span> {{ cart.totalCount }} </span>
       </h2>
