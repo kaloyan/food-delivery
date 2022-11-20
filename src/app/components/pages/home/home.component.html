@@ -6,47 +6,47 @@
     <div class="col">
       <ul class="my-4">
         <li *ngFor="let food of foods" class="border-light">
-          <div class="card" style="width: 18rem">
-            <img [src]="food.imageUrl" class="card-img-top" [alt]="food.name" />
-            <div class="card-body">
-              <h5 class="card-title">{{ food.name }}</h5>
+          <a href="" routerLink="/food/{{ food.id }}">
+            <div class="card" style="width: 18rem">
+              <img
+                [src]="food.imageUrl"
+                class="card-img-top"
+                [alt]="food.name"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ food.name }}</h5>
 
-              <!-- <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-              <button class="btn btn-outline-primary favorite-wrap">
+                <!-- <button class="btn btn-outline-primary favorite-wrap"> -->
                 <span class="favorite {{ food.favorite ? '' : 'not' }}">
                   <i class="fa-solid fa-heart"></i>
                 </span>
-              </button>
+                <!-- </button> -->
 
-              <div class="stars">
-                <star-rating
-                  [value]="food.stars"
-                  [totalstars]="5"
-                  checkedcolor="red"
-                  uncheckedcolor="black"
-                  size="22px"
-                  [readonly]="true"
-                ></star-rating>
+                <div class="stars">
+                  <star-rating
+                    [value]="food.stars"
+                    [totalstars]="5"
+                    checkedcolor="red"
+                    uncheckedcolor="black"
+                    size="22px"
+                    [readonly]="true"
+                  ></star-rating>
+                </div>
+
+                <span *ngFor="let origin of food.origins" class="origins">
+                  {{ origin }}
+                </span>
               </div>
 
-              <span *ngFor="let origin of food.origins" class="origins">
-                {{ origin }}
-              </span>
-            </div>
+              <div class="card-footer d-flex justify-content-between">
+                <span>
+                  Time: <i class="fa-solid fa-clock"></i> {{ food.cookTime }}
+                </span>
 
-            <div class="card-footer d-flex justify-content-between">
-              <span>
-                Time: <i class="fa-solid fa-clock"></i> {{ food.cookTime }}
-              </span>
-
-              <span class="price">Price: {{ food.price | currency }}</span>
+                <span class="price">Price: {{ food.price | currency }}</span>
+              </div>
             </div>
-          </div>
+          </a>
         </li>
       </ul>
     </div>

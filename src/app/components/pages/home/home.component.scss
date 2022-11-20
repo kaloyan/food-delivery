@@ -5,17 +5,18 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .card-body {
   position: relative;
 }
 
-.favorite-wrap {
+.favorite {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-}
-
-.favorite {
   color: rgb(222, 49, 49);
   font-size: 1rem;
 }
