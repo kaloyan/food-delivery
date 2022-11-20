@@ -53,7 +53,9 @@
             <span class="price">Price: {{ food.price | currency }}</span>
           </p>
 
-          <button class="btn btn-primary">Add To Cart</button>
+          <button (click)="addToCart()" class="btn btn-primary">
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>

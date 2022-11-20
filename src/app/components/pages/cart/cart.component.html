@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="rod">
+    <div class="col">
+      <h1>Cart Page</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let item of cart.items">
+          <div class="row d-flex align-items-center">
+            <div class="col">
+              <img
+                [src]="item.food.imageUrl"
+                [alt]="item.food.name"
+                class="thumb"
+              />
+            </div>
+
+            <div class="col-4">
+              <h4>
+                <a routerLink="/food/{{ item.food.id }}">{{
+                  item.food.name
+                }}</a>
+              </h4>
+            </div>
+
+            <div class="col">
+              <select
+                class="form-select form-select-sm"
+                #quantity
+                aria-label="Quantity"
+                [value]="item.quantity"
+                (change)="changeQuanity(item, quantity.value)"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              {{ item.quantity }}
+            </div>
+
+            <div class="col">
+              <h3>{{ item.price | currency }}</h3>
+            </div>
+
+            <div class="col">
+              <button
+                class="btn btn-outline-danger"
+                (click)="removeFromCart(item)"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-4">
+      <h2>
+        Items count: <span> {{ cart.totalCount }} </span>
+      </h2>
+      <h2>
+        Price: <span> {{ cart.totalPrice | currency }} </span>
+      </h2>
+
+      <button class="btn btn-primary" routerLink="/checkout">Checkout</button>
+    </div>
+  </div>
+</div>

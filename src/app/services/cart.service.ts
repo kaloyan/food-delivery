@@ -22,6 +22,8 @@ export class CartService {
 
     this.cart.items.push(new CartItem(food));
     this.saveCart();
+
+    console.log(this.cart);
   }
 
   removeFromCart(foodId: string): void {
