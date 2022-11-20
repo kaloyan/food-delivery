@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="card my-5">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img
+          [src]="food.imageUrl"
+          class="img-fluid rounded-start"
+          [alt]="food.name"
+        />
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h1 class="card-title">{{ food.name }}</h1>
+
+          <button class="btn btn-outline-primary favorite-wrap">
+            <span class="favorite {{ food.favorite ? '' : 'not' }}">
+              <i class="fa-solid fa-heart"></i>
+            </span>
+          </button>
+
+          <p class="card-text stars">
+            <star-rating
+              [value]="food.stars"
+              [totalstars]="5"
+              checkedcolor="red"
+              uncheckedcolor="black"
+              size="22px"
+              [readonly]="true"
+            ></star-rating>
+          </p>
+
+          <p class="card-text">
+            <span *ngFor="let origin of food.origins" class="origins">
+              {{ origin }}
+            </span>
+          </p>
+
+          <p class="card-text">
+            <a
+              *ngFor="let tag of food.tags"
+              class="tags"
+              routerLink="/tag/{{ tag }}"
+            >
+              {{ tag }}
+            </a>
+          </p>
+
+          <p class="card-text">
+            Time to cook about {{ food.cookTime }} minutes.
+          </p>
+
+          <p class="card-text">
+            <span class="price">Price: {{ food.price | currency }}</span>
+          </p>
+
+          <button class="btn btn-primary">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
