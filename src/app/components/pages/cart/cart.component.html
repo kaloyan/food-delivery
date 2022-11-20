@@ -27,11 +27,12 @@
             </div>
 
             <div class="col">
+              {{ item.count }}
               <select
                 class="form-select form-select-sm"
                 #quantity
                 aria-label="Quantity"
-                [value]="item.quantity"
+                [value]="item.count"
                 (change)="changeQuanity(item, quantity.value)"
               >
                 <option value="1">1</option>
@@ -40,7 +41,6 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              {{ item.quantity }}
             </div>
 
             <div class="col">

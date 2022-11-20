@@ -20,10 +20,9 @@ export class CartService {
       return;
     }
 
-    this.cart.items.push(new CartItem(food));
+    let item = new CartItem(food);
+    this.cart.items.push(item);
     this.saveCart();
-
-    console.log(this.cart);
   }
 
   removeFromCart(foodId: string): void {
@@ -32,13 +31,13 @@ export class CartService {
   }
 
   changeQuantity(foodId: string, quantity: number): void {
-    let cartItem = this.cart.items.find((item) => item.food.id === foodId);
+    let cartItem = this.cart.items.find((item) => item.food.id == foodId);
 
     if (!cartItem) {
       return;
     }
 
-    cartItem.quantity = quantity;
+    cartItem.count = quantity;
     cartItem.price = cartItem.food.price * quantity;
 
     this.saveCart();
@@ -62,7 +61,7 @@ export class CartService {
 
     // next: calculate total items count
     this.cart.totalCount = this.cart.items.reduce(
-      (count, item) => (item.quantity = count),
+      (count, item) => item.count + count,
       0
     );
 
