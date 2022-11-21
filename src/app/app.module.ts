@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +14,17 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchboxComponent, TagsComponent, FoodDetailsComponent, CartComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, RatingModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    SearchboxComponent,
+    TagsComponent,
+    FoodDetailsComponent,
+    CartComponent,
+    NotFoundComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, RatingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
