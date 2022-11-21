@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { sample_food, sample_tags } from 'src/data';
 import {
   FOODS_URL,
   FOOD_BY_ID_URL,

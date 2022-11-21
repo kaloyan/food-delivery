@@ -1,11 +1,11 @@
 <div class="container">
   <app-not-found
-    [isVisible]="!food.id"
+    [isVisible]="!food"
     message="Food Not Found!"
     resetText="Back to Homepage"
   ></app-not-found>
 
-  <div class="card my-5" *ngIf="food.id">
+  <div class="card my-5" *ngIf="food">
     <div class="row g-0">
       <div class="col-md-6">
         <img
