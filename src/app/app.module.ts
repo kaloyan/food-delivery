@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,8 @@ import { FoodDetailsComponent } from './components/pages/food-details/food-detai
 import { CartComponent } from './components/pages/cart/cart.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { ToastComponent } from './components/partials/toast/toast.component';
+import { ToasterComponent } from './components/partials/toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,12 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
     CartComponent,
     NotFoundComponent,
     LoginPageComponent,
+    ToastComponent,
+    ToasterComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RatingModule,
     HttpClientModule,
