@@ -15,14 +15,14 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item">
+        <li *ngIf="!isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/login" aria-current="login" href=""
             >Login</a
           >
         </li>
         <li class="nav-item"></li>
 
-        <li class="nav-item dropdown">
+        <li *ngIf="isLoggedIn" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -30,7 +30,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            John
+            {{ user.name }}
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -46,7 +46,7 @@
             </li>
 
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="">Logout</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
             <li><hr class="dropdown-divider" /></li>
           </ul>
         </li>
