@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 d-flex flex-column align-items-center offset-3 my-5">
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="submit()"
+        [ngClass]="{
+          'was-validated':
+            (formControls.name.errors && submited) ||
+            (formControls.email.errors && submited) ||
+            (formControls.password.errors && submited) ||
+            (formControls.confirmPassword.errors && submited) ||
+            (formControls.address.errors && submited),
+          'needs-validation': !submited
+        }"
+        novalidate
+      >
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="nameHelp"
+            formControlName="name"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid name.</div>
+
+          <div id="emailHelp" class="form-text">Please type your full name</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+            formControlName="email"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid email.</div>
+
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please type your password.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please type the same password.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            aria-describedby="addressHelp"
+            formControlName="address"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please type your aaddress.</div>
+
+          <!-- <div id="emailHelp" class="form-text">Please type your full name</div> -->
+        </div>
+
+        <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Remember me</label
+          >
+        </div> -->
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+
+      <p class="mt-3">
+        Already registered?
+        <a
+          [queryParams]="{ returnUrl: returnUrl }"
+          routerLink="/login"
+          href="/login"
+          >Login here</a
+        >
+      </p>
+    </div>
+  </div>
+</div>

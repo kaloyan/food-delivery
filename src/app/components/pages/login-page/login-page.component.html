@@ -6,9 +6,9 @@
         (ngSubmit)="submit()"
         [ngClass]="{
           'was-validated':
-            (formControls.email.errors && submitted) ||
-            (formControls.password.errors && submitted),
-          'needs-validation': !submitted
+            (formControls.email.errors && submited) ||
+            (formControls.password.errors && submited),
+          'needs-validation': !submited
         }"
         novalidate
       >
@@ -42,12 +42,12 @@
         <div class="valid-feedback">Looks good!</div>
         <div class="invalid-feedback">Please type your password.</div>
 
-        <div class="mb-3 form-check">
+        <!-- <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1" />
           <label class="form-check-label" for="exampleCheck1"
             >Remember me</label
           >
-        </div>
+        </div> -->
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
 

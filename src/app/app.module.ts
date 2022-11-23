@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { ToastComponent } from './components/partials/toast/toast.component';
 import { ToasterComponent } from './components/partials/toaster/toaster.component';
+import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToasterComponent } from './components/partials/toaster/toaster.componen
     LoginPageComponent,
     ToastComponent,
     ToasterComponent,
+    RegisterPageComponent,
   ],
   imports: [
     BrowserModule,

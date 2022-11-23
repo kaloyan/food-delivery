@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
-  submitted = false;
+  submited = false;
   returnUrl = '';
 
   constructor(
@@ -34,11 +34,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit() {
-    this.submitted = true;
-
-    if (this.loginForm.invalid) {
-      return;
-    }
+    this.submited = true;
+    if (this.loginForm.invalid) return;
 
     this.userService
       .login({
