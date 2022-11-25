@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Order Form</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="checkoutForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Name</label>
+          <input [value]="formControls.name.value" label="Name" />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Address</label>
+          <input [value]="formControls.address.value" label="Address" />
+        </div>
+      </form>
+
+      <app-order-items-list [order]="order"></app-order-items-list>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="map">
+        <h4>Choose your address on map</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="createOrder()">
+        Go to payment
+      </button>
+    </div>
+  </div>
+</div>
