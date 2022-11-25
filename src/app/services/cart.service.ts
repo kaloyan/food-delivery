@@ -52,6 +52,10 @@ export class CartService {
     return this.cartSubject.asObservable();
   }
 
+  getCart(): Cart {
+    return this.cartSubject.value;
+  }
+
   private saveCart(): void {
     // first calculae total price
     this.cart.totalPrice = this.cart.items.reduce(

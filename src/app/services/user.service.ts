@@ -74,4 +74,8 @@ export class UserService {
       return new User();
     }
   }
+
+  public get currentUser(): User {
+    return this.userSubject.value;
+  }
 }
