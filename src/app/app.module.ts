@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,6 +18,8 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { ToastComponent } from './components/partials/toast/toast.component';
 import { ToasterComponent } from './components/partials/toaster/toaster.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { SpinnerComponent } from './components/partials/spinner/spinner.component';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { RegisterPageComponent } from './components/pages/register-page/register
     ToastComponent,
     ToasterComponent,
     RegisterPageComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,13 @@ import { RegisterPageComponent } from './components/pages/register-page/register
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
