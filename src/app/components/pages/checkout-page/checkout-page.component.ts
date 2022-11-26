@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 import { Order } from 'src/app/shared/models/Order';
@@ -16,9 +18,11 @@ export class CheckoutPageComponent implements OnInit {
 
   constructor(
     cartService: CartService,
+    private router: Router,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private orderService: OrderService
   ) {
     const cart = cartService.getCart();
     this.order.items = cart.items;
@@ -44,10 +48,25 @@ export class CheckoutPageComponent implements OnInit {
       return;
     }
 
+    if (!this.order.latlong) {
+      this.toastService.showWarningToast(
+        'Waning: No location',
+        'Please select your location on the map.'
+      );
+      return;
+    }
+
     this.order.name = this.formControls.name.value;
     this.order.address = this.formControls.address.value;
 
-    // DEBUG !FIXME
-    console.log(this.order);
+    // post new order on server
+    this.orderService.create(this.order).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/payment');
+      },
+      error: (error) => {
+        this.toastService.showErrorToast('Error', error);
+      },
+    });
   }
 }

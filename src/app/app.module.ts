@@ -19,10 +19,11 @@ import { ToastComponent } from './components/partials/toast/toast.component';
 import { ToasterComponent } from './components/partials/toaster/toaster.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { SpinnerComponent } from './components/partials/spinner/spinner.component';
-import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,11 @@ import { MapComponent } from './components/partials/map/map.component';
     ReactiveFormsModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
