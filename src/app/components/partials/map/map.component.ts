@@ -1,4 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  ViewChild,
+} from '@angular/core';
 import {
   icon,
   LatLng,
@@ -19,7 +25,7 @@ import { Order } from 'src/app/shared/models/Order';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnChanges {
   private readonly DEFAULT_LATLONG: LatLngTuple = [13.75, 21.62];
   private readonly ZOOM_LEVEL = 16;
   private readonly MARKER_ICON = icon({
@@ -32,6 +38,9 @@ export class MapComponent implements OnInit {
   @Input()
   order!: Order;
 
+  @Input()
+  readonly = false;
+
   @ViewChild('map', { static: true })
   mapRef!: ElementRef;
   map!: Map;
@@ -39,8 +48,28 @@ export class MapComponent implements OnInit {
 
   constructor(private locationService: LocationService) {}
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    if (!this.order) return;
+
     this.mapInit();
+
+    if (this.readonly && this.addressLatLng) {
+      this.showReadOnlyLocation();
+    }
+  }
+
+  showReadOnlyLocation() {
+    this.setMarker(this.addressLatLng);
+    this.map.setView(this.addressLatLng, this.ZOOM_LEVEL);
+    this.map.dragging.disable();
+    this.map.touchZoom.disable();
+    this.map.doubleClickZoom.disable();
+    this.map.scrollWheelZoom.disable();
+    this.map.boxZoom.disable();
+    this.map.keyboard.disable();
+    this.map.off('click');
+    this.map.tap?.disable();
+    this.currentMarker.dragging?.disable();
   }
 
   mapInit() {
@@ -77,6 +106,8 @@ export class MapComponent implements OnInit {
   }
 
   set addressLatLng(latlng: LatLng) {
+    if (!latlng.lat.toFixed) return;
+
     latlng.lat = parseFloat(latlng.lat.toFixed(8));
     latlng.lng = parseFloat(latlng.lng.toFixed(8));
 
@@ -90,5 +121,9 @@ export class MapComponent implements OnInit {
         this.setMarker(latlng);
       },
     });
+  }
+
+  get addressLatLng() {
+    return this.order.latlong!;
   }
 }

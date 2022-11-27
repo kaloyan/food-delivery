@@ -65,7 +65,7 @@ export class CheckoutPageComponent implements OnInit {
         this.router.navigateByUrl('/payment');
       },
       error: (error) => {
-        this.toastService.showErrorToast('Error', error);
+        this.toastService.showErrorToast('Error', error.message);
       },
     });
   }
