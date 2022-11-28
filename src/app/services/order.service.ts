@@ -6,6 +6,7 @@ import {
   MY_ORDERS_URL,
   ORDER_CREATE_URL,
   ORDER_PAY_URL,
+  ORDER_TRACK_URL,
 } from '../shared/constants/urls';
 
 @Injectable({
@@ -24,5 +25,9 @@ export class OrderService {
 
   pay(order: Order): Observable<string> {
     return this.http.post<string>(ORDER_PAY_URL, order);
+  }
+
+  trackById(id: number): Observable<Order> {
+    return this.http.get<Order>(ORDER_TRACK_URL + id);
   }
 }

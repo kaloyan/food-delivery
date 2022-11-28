@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:3000';
+import { environment } from 'src/environments/environment';
+
+const BASE_URL = environment.production ? '' : 'http://localhost:3000';
 
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const TAGS_URL = BASE_URL + '/api/foods/tags';
@@ -13,3 +15,4 @@ export const ORDERS_URL = BASE_URL + '/api/orders';
 export const ORDER_CREATE_URL = BASE_URL + '/api/orders/create';
 export const MY_ORDERS_URL = BASE_URL + '/api/orders/my-orders';
 export const ORDER_PAY_URL = BASE_URL + '/api/orders/pay';
+export const ORDER_TRACK_URL = BASE_URL + '/api/orders/track/';
