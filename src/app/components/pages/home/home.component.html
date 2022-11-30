@@ -27,17 +27,6 @@
                 </span>
                 <!-- </button> -->
 
-                <div class="stars">
-                  <star-rating
-                    [value]="food.stars"
-                    [totalstars]="5"
-                    checkedcolor="red"
-                    uncheckedcolor="black"
-                    size="22px"
-                    [readonly]="true"
-                  ></star-rating>
-                </div>
-
                 <span *ngFor="let origin of food.origins" class="origins">
                   {{ origin }}
                 </span>
