@@ -30,6 +30,8 @@ export class PaginationComponent implements OnChanges {
 
       if (params['query']) {
         this.pagerPrefix = `/search/${params['query']}/page/`;
+      } else if (params['tag']) {
+        this.pagerPrefix = `/tag/${params['tag']}/page/`;
       } else {
         this.pagerPrefix = '/page/';
       }

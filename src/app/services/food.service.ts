@@ -42,11 +42,17 @@ export class FoodService {
     return this.http.get<Tag[]>(TAGS_URL);
   }
 
-  getFoodByTag(tag: string): Observable<IFoodResults> {
+  getFoodByTag(tag: string, num: number = 0): Observable<IFoodResults> {
+    let url = FOOD_BY_TAG_URL + tag;
+
+    if (num > 0) {
+      url += '/page/' + num;
+    }
+
     if (tag === 'All') {
       return this.getAll();
     } else {
-      return this.http.get<IFoodResults>(FOOD_BY_TAG_URL + tag);
+      return this.http.get<IFoodResults>(url);
     }
   }
 

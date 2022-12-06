@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'search/:query', component: HomeComponent },
   { path: 'search/:query/page/:num', component: HomeComponent },
   { path: 'tag/:tag', component: HomeComponent },
+  { path: 'tag/:tag/page/:num', component: HomeComponent },
   { path: 'food/:foodId', component: FoodDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginPageComponent },

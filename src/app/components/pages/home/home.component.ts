@@ -33,7 +33,14 @@ export class HomeComponent implements OnInit {
           foodObservable = this.foodService.searchFood(params['query']);
         }
       } else if (params['tag']) {
-        foodObservable = this.foodService.getFoodByTag(params['tag']);
+        if (params['num']) {
+          foodObservable = this.foodService.getFoodByTag(
+            params['tag'],
+            params['num']
+          );
+        } else {
+          foodObservable = this.foodService.getFoodByTag(params['tag']);
+        }
       } else if (params['num']) {
         foodObservable = foodService.getAll(params['num']);
       } else {
