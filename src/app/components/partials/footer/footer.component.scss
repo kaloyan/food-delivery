@@ -1,7 +1,6 @@
 .footer {
   width: 100%;
   min-height: 5rem;
-  background-color: rgb(100, 100, 100);
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -9,4 +8,47 @@
   padding: 2rem;
   color: white;
   margin-top: 2rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding-top: 3rem;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  gap: 0.7rem;
+  font-weight: bold;
+}
+
+.menu-list i {
+  color: yellow;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+}
+
+.menu-head {
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.socials ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  gap: 1.5rem;
+  font-size: 2rem;
+}
+
+.socials ul a {
+  color: white;
+}
+
+.warning {
+  color: yellow;
 }
