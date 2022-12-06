@@ -1,5 +1,11 @@
 <div class="container">
-  <div class="row">
+  <div class="row title">
+    <div class="col">
+      <h1>Login Page</h1>
+    </div>
+  </div>
+
+  <div class="row form-content">
     <div class="col-6 d-flex flex-column align-items-center offset-3 my-5">
       <form
         [formGroup]="loginForm"
@@ -14,41 +20,50 @@
       >
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            aria-describedby="emailHelp"
-            formControlName="email"
-            required
-          />
-          <div class="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Please provide a valid email.</div>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="fa-solid fa-at"></i>
+            </span>
 
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              formControlName="email"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid email.</div>
           </div>
+          <!-- <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div> -->
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            formControlName="password"
-            required
-          />
-        </div>
-        <div class="valid-feedback">Looks good!</div>
-        <div class="invalid-feedback">Please type your password.</div>
+          <div class="input-group input-group-lg">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="fa-solid fa-lock"></i>
+            </span>
 
-        <!-- <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Remember me</label
-          >
-        </div> -->
-        <button type="submit" class="btn btn-primary">Login</button>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+              required
+            />
+
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please type your password.</div>
+          </div>
+          <!-- <div id="emailHelp" class="form-text">
+            Please select strong password - at least 5 characters long.
+          </div> -->
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Login</button>
       </form>
 
       <p class="mt-3">
