@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item" *ngIf="showPrev">
+            <a class="page-link" routerLink="{{ pagerPrefix + prevPage }}"
+              >Previous</a
+            >
+          </li>
+
+          <ng-container *ngFor="let page of pageItems">
+            <li
+              class="page-item active"
+              aria-current="page"
+              *ngIf="page == currentPage"
+            >
+              <span class="page-link"> {{ currentPage }} </span>
+            </li>
+
+            <li class="page-item" *ngIf="page != currentPage">
+              <a class="page-link" routerLink="{{ pagerPrefix + page }}">
+                {{ page }}
+              </a>
+            </li>
+          </ng-container>
+
+          <li class="page-item" *ngIf="showNext">
+            <a class="page-link" routerLink="{{ pagerPrefix + nextPage }}"
+              >Next</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

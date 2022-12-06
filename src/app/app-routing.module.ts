@@ -12,7 +12,9 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'page/:num', component: HomeComponent },
   { path: 'search/:query', component: HomeComponent },
+  { path: 'search/:query/page/:num', component: HomeComponent },
   { path: 'tag/:tag', component: HomeComponent },
   { path: 'food/:foodId', component: FoodDetailsComponent },
   { path: 'cart', component: CartComponent },
