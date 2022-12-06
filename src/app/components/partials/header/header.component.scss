@@ -1,0 +1,19 @@
+.menu {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navbar-brand img {
+  height: 45px;
+  margin: 0.4rem;
+}
+
+.menu > div > ul > li {
+  margin-right: 1.2rem;
+  padding: 0.5rem;
+}
+
+.menu ul li:hover {
+  background-color: #0d6efd;
+  border-radius: 0.3rem;
+}
