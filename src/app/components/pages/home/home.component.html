@@ -14,7 +14,7 @@
           <a href="" routerLink="/food/{{ food.id }}">
             <div class="card" style="width: 18rem">
               <img
-                [src]="food.imageUrl"
+                [src]="imageHost + food.imageUrl"
                 class="card-img-top"
                 [alt]="food.name"
               />
@@ -45,4 +45,10 @@
       </ul>
     </div>
   </div>
+
+  <app-pagination
+    *ngIf="itemsCount > pageSize"
+    [slice]="slice"
+    [itemsCount]="itemsCount"
+  ></app-pagination>
 </div>

@@ -2,6 +2,8 @@ import { environment } from 'src/environments/environment';
 
 const BASE_URL = environment.production ? '' : 'http://localhost:3000';
 
+export const IMAGES_HOST = 'http://food-delivery.us.to';
+
 export const FOODS_URL = BASE_URL + '/api/foods';
 export const TAGS_URL = BASE_URL + '/api/foods/tags';
 export const SEARCH_URL = BASE_URL + '/api/foods/search/';

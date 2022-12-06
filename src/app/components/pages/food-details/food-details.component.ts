@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { FoodService } from 'src/app/services/food.service';
 import { Food } from 'src/app/shared/models/Food';
+import { IMAGES_HOST } from '../../../shared/constants/urls';
 
 @Component({
   selector: 'app-food-details',
@@ -11,6 +12,7 @@ import { Food } from 'src/app/shared/models/Food';
 })
 export class FoodDetailsComponent implements OnInit {
   food!: Food;
+  imageHost = IMAGES_HOST;
 
   constructor(
     activatedRoute: ActivatedRoute,
