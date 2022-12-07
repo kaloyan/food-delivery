@@ -28,6 +28,10 @@ import { PaypalButtonComponent } from './components/partials/paypal-button/paypa
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
 import { PaginationComponent } from './components/partials/pagination/pagination.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
+import { FrontpageComponent } from './components/pages/frontpage/frontpage.component';
+import { HeroComponent } from './components/partials/hero/hero.component';
+import { PopularDishesComponent } from './components/partials/popular-dishes/popular-dishes.component';
+import { FoodItemComponent } from './components/partials/food-item/food-item.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { FooterComponent } from './components/partials/footer/footer.component';
     OrderTrackComponent,
     PaginationComponent,
     FooterComponent,
+    FrontpageComponent,
+    HeroComponent,
+    PopularDishesComponent,
+    FoodItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { FoodService } from 'src/app/services/food.service';
 import { IFoodResults } from 'src/app/shared/interfaces/IFoodResult';
 import { Food } from 'src/app/shared/models/Food';
-import { IMAGES_HOST } from '../../../shared/constants/urls';
 import { PAGE_SIZE } from 'src/app/shared/constants/settings';
 
 @Component({
@@ -15,7 +14,6 @@ import { PAGE_SIZE } from 'src/app/shared/constants/settings';
 export class HomeComponent implements OnInit {
   foods: Food[] = [];
   pageSize = PAGE_SIZE;
-  imageHost = IMAGES_HOST;
   itemsCount = 0;
   slice = {};
 
