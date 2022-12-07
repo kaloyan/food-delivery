@@ -1,0 +1,25 @@
+<a routerLink="/food/{{ food.id }}" class="link">
+  <div class="card" style="width: 18rem">
+    <img
+      [src]="imageHost + food.imageUrl"
+      class="card-img-top"
+      [alt]="food.name"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ food.name }}</h5>
+      <span class="favorite {{ food.favorite ? '' : 'not' }}">
+        <i class="fa-solid fa-heart"></i>
+      </span>
+
+      <span *ngFor="let origin of food.origins" class="origins">
+        {{ origin }}
+      </span>
+    </div>
+
+    <div class="card-footer d-flex justify-content-between">
+      <span> Time: <i class="fa-solid fa-clock"></i> {{ food.cookTime }} </span>
+
+      <span class="price">Price: {{ food.price | currency }}</span>
+    </div>
+  </div>
+</a>
