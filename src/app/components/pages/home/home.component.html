@@ -1,7 +1,16 @@
-<app-searchbox></app-searchbox>
-<app-tags></app-tags>
-
 <div class="container">
+  <div class="row">
+    <div class="col searchbox">
+      <app-searchbox></app-searchbox>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <app-tags></app-tags>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col">
       <app-not-found
@@ -11,44 +20,19 @@
 
       <ul class="my-4">
         <li *ngFor="let food of foods" class="border-light">
-          <a href="" routerLink="/food/{{ food.id }}">
-            <div class="card" style="width: 18rem">
-              <img
-                [src]="imageHost + food.imageUrl"
-                class="card-img-top"
-                [alt]="food.name"
-              />
-              <div class="card-body">
-                <h5 class="card-title">{{ food.name }}</h5>
-
-                <!-- <button class="btn btn-outline-primary favorite-wrap"> -->
-                <span class="favorite {{ food.favorite ? '' : 'not' }}">
-                  <i class="fa-solid fa-heart"></i>
-                </span>
-                <!-- </button> -->
-
-                <span *ngFor="let origin of food.origins" class="origins">
-                  {{ origin }}
-                </span>
-              </div>
-
-              <div class="card-footer d-flex justify-content-between">
-                <span>
-                  Time: <i class="fa-solid fa-clock"></i> {{ food.cookTime }}
-                </span>
-
-                <span class="price">Price: {{ food.price | currency }}</span>
-              </div>
-            </div>
-          </a>
+          <app-food-item [food]="food"></app-food-item>
         </li>
       </ul>
     </div>
   </div>
 
-  <app-pagination
-    *ngIf="itemsCount > pageSize"
-    [slice]="slice"
-    [itemsCount]="itemsCount"
-  ></app-pagination>
+  <div class="row">
+    <div class="col">
+      <app-pagination
+        *ngIf="itemsCount > pageSize"
+        [slice]="slice"
+        [itemsCount]="itemsCount"
+      ></app-pagination>
+    </div>
+  </div>
 </div>

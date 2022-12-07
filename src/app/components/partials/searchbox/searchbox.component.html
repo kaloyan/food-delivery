@@ -2,22 +2,29 @@
   <div class="row">
     <div class="col-12">
       <form (submit)="doSubmit($event)" class="d-flex" role="search">
-        <input
-          #s
-          (keyup.enter)="doSearch(s.value)"
-          [value]="query"
-          class="form-control me-2"
-          type="search"
-          placeholder="Search food"
-          aria-label="Search"
-        />
-        <button
-          (click)="doSearch(s.value)"
-          class="btn btn-outline-success"
-          type="button"
-        >
-          Search
-        </button>
+        <div class="input-group input-group-lg">
+          <span class="input-group-text" id="basic-addon1">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          </span>
+
+          <input
+            #s
+            (keyup.enter)="doSearch(s.value)"
+            [value]="query"
+            class="form-control"
+            type="search"
+            placeholder="Search food"
+            aria-label="Search"
+          />
+
+          <button
+            (click)="doSearch(s.value)"
+            class="btn btn-success"
+            type="button"
+          >
+            Search
+          </button>
+        </div>
       </form>
     </div>
   </div>
