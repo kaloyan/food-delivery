@@ -35,7 +35,9 @@
               routerLink="/page/1"
               aria-current="browse"
               href=""
-              >Browse All Foods</a
+            >
+              <i class="fa-solid fa-list"></i>
+              Browse All Foods</a
             >
           </li>
 
@@ -59,7 +61,15 @@
             >
           </li>
 
-          <li class="nav-item"></li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/cart" href="">
+              <i class="fa-solid fa-cart-shopping"></i>
+              Cart
+              <span *ngIf="cartItemsCount" class="badge text-bg-primary">
+                {{ cartItemsCount }}
+              </span>
+            </a>
+          </li>
 
           <li *ngIf="isLoggedIn" class="nav-item dropdown">
             <a
@@ -69,6 +79,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
+              <i class="fa-solid fa-user"></i>
               {{ user.name }}
             </a>
             <ul class="dropdown-menu">
@@ -84,15 +95,6 @@
               <li><hr class="dropdown-divider" /></li>
               <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
             </ul>
-          </li>
-
-          <li>
-            <a class="dropdown-item text-light" routerLink="/cart" href=""
-              >Cart
-              <span *ngIf="cartItemsCount" class="badge text-bg-primary">
-                {{ cartItemsCount }}
-              </span></a
-            >
           </li>
         </ul>
       </div>
