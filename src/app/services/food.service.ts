@@ -5,6 +5,7 @@ import {
   FOODS_URL,
   FOOD_BY_ID_URL,
   FOOD_BY_TAG_URL,
+  POPULAR_FOODS_URL,
   SEARCH_URL,
   TAGS_URL,
 } from '../shared/constants/urls';
@@ -58,5 +59,9 @@ export class FoodService {
 
   getFoodById(foodId: string): Observable<Food> {
     return this.http.get<Food>(FOOD_BY_ID_URL + foodId);
+  }
+
+  getPopularDishes(): Observable<Food[]> {
+    return this.http.get<Food[]>(POPULAR_FOODS_URL);
   }
 }

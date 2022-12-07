@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col header">
+      <h1>Popular Dishes</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <ng-container *ngFor="let food of foods">
+      <div class="col">
+        <app-food-item [food]="food"></app-food-item>
+      </div>
+    </ng-container>
+  </div>
+</div>
