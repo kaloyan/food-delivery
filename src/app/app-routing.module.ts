@@ -4,6 +4,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { FoodDetailsComponent } from './components/pages/food-details/food-details.component';
+import { FrontpageComponent } from './components/pages/frontpage/frontpage.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
@@ -11,7 +12,7 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: FrontpageComponent },
   { path: 'page/:num', component: HomeComponent },
   { path: 'search/:query', component: HomeComponent },
   { path: 'search/:query/page/:num', component: HomeComponent },
