@@ -1,42 +1,33 @@
 <div class="container">
-  <div class="row">
+  <div class="row header">
     <div class="col">
-      <h1>Order Form</h1>
+      <h1>Order Summary</h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="col">
-      <form [formGroup]="checkoutForm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input [value]="formControls.name.value" label="Name" />
-        </div>
-
-        <div class="mb-3">
-          <label for="address" class="form-label">Address</label>
-          <input [value]="formControls.address.value" label="Address" />
-        </div>
-      </form>
-
+    <div class="col-8">
       <app-order-items-list [order]="order"></app-order-items-list>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <div class="map">
-        <h4>Choose your address on map</h4>
-        <app-map [order]="order"></app-map>
+      <div class="row">
+        <div class="col">
+          <app-paypal-button [order]="order"></app-paypal-button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-primary" (click)="createOrder()">
-        Go to payment
-      </button>
+    <div class="col-4">
+      <div class="mb-3">
+        <h2>
+          Name: <span> {{ user.name }} </span>
+        </h2>
+        <h4>Address: {{ user.address }}</h4>
+      </div>
+
+      <div class="map">
+        <h5>Choose delivery address</h5>
+        <app-map [order]="order"></app-map>
+      </div>
     </div>
   </div>
 </div>
