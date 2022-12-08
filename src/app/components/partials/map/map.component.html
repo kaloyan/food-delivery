@@ -4,9 +4,10 @@
       <div class="location">
         <button
           *ngIf="!readonly"
-          class="btn btn-primary"
+          class="btn btn-outline-info location-btn"
           (click)="findLocation()"
         >
+          <i class="fa-sharp fa-solid fa-location-crosshairs"></i>
           Find my location
         </button>
 

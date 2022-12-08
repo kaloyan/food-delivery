@@ -29,8 +29,7 @@ export class MapComponent implements OnChanges {
   private readonly DEFAULT_LATLONG: LatLngTuple = [13.75, 21.62];
   private readonly ZOOM_LEVEL = 16;
   private readonly MARKER_ICON = icon({
-    iconUrl:
-      'https://res.cloudinary.com/foodmine/image/upload/v1638842791/map/marker_kbua9q.png',
+    iconUrl: '/assets/marker-icon-n.png',
     iconSize: [42, 42],
     iconAnchor: [21, 42],
   });

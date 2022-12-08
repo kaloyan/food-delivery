@@ -16,12 +16,15 @@ export class HomeComponent implements OnInit {
   pageSize = PAGE_SIZE;
   itemsCount = 0;
   slice = {};
+  query: string = '';
 
   constructor(private foodService: FoodService, actvatedRoute: ActivatedRoute) {
     let foodObservable: Observable<IFoodResults>;
 
     actvatedRoute.params.subscribe((params) => {
       if (params['query']) {
+        this.query = params['query'];
+
         if (params['num']) {
           foodObservable = this.foodService.searchFood(
             params['query'],
