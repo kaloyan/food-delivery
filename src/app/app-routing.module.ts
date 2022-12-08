@@ -8,7 +8,6 @@ import { FrontpageComponent } from './components/pages/frontpage/frontpage.compo
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
-import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 const routes: Routes = [
@@ -22,11 +21,6 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  {
-    path: 'payment',
-    component: PaymentPageComponent,
-    canActivate: [AuthGuard],
-  },
   {
     path: 'checkout',
     component: CheckoutPageComponent,

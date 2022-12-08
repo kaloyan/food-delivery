@@ -23,7 +23,6 @@ import { OrderItemsListComponent } from './components/partials/order-items-list/
 import { MapComponent } from './components/partials/map/map.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
 import { PaginationComponent } from './components/partials/pagination/pagination.component';
@@ -51,7 +50,6 @@ import { FoodItemComponent } from './components/partials/food-item/food-item.com
     CheckoutPageComponent,
     OrderItemsListComponent,
     MapComponent,
-    PaymentPageComponent,
     PaypalButtonComponent,
     OrderTrackComponent,
     PaginationComponent,
