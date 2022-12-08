@@ -1,9 +1,13 @@
 <div class="container">
-  <div class="row">
+  <div class="row header">
     <div class="col">
-      <div class="content" *ngIf="order">
-        <h1>Order #{{ order.id }}</h1>
+      <h1>Order #{{ order.id }}</h1>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-4">
+      <div class="content" *ngIf="order">
         <div class="details">
           <div>
             <strong>Date: </strong> {{ order.createdAt | date: "medium" }}
@@ -16,13 +20,24 @@
           </div>
         </div>
 
-        <app-order-items-list [order]="order"></app-order-items-list>
-
         <div>
           <h3>Shipping Address:</h3>
 
           <app-map [order]="order" [readonly]="true"></app-map>
         </div>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <app-order-items-list [order]="order"></app-order-items-list>
+
+      <div class="buttons">
+        <button class="btn btn-outline-primary btn-lg" (click)="print()">
+          Print order
+        </button>
+        <button class="btn btn-primary btn-lg" routerLink="/">
+          Continue shopping
+        </button>
       </div>
     </div>
   </div>

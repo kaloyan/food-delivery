@@ -8,7 +8,7 @@ import { Order } from 'src/app/shared/models/Order';
   templateUrl: './order-track.component.html',
   styleUrls: ['./order-track.component.scss'],
 })
-export class OrderTrackComponent implements OnInit {
+export class OrderTrackComponent {
   order!: Order;
 
   constructor(activatedRoute: ActivatedRoute, orderService: OrderService) {
@@ -23,5 +23,7 @@ export class OrderTrackComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  print() {
+    window.print();
+  }
 }
