@@ -1,22 +1,21 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Product</th>
       <th scope="col">Single price</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
     </tr>
   </thead>
+
   <tbody>
     <tr *ngFor="let item of order.items">
-      <th scope="row">1</th>
       <td>
         <a
           routerLink="/food/{{ item.food.id }}"
           href="/food/{{ item.food.id }}"
         >
-          <img [src]="item.food.imageUrl" [alt]="item.food.name" />
+          <img [src]="imagesHost + item.food.imageUrl" [alt]="item.food.name" />
           {{ item.food.name }}
         </a>
       </td>
@@ -35,13 +34,13 @@
     </tr>
 
     <tr>
-      <td colspan="3"></td>
+      <td colspan="2"></td>
 
-      <td>
+      <td class="bold">
         <strong>Total price:</strong>
       </td>
 
-      <td>
+      <td class="bold">
         <strong>
           {{ order.totalPrice | currency }}
         </strong>
