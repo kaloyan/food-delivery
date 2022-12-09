@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col header">
+      <h1>Process Payment</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <app-order-items-list [order]="order"></app-order-items-list>
+
+      <app-paypal-button [order]="order"></app-paypal-button>
+    </div>
+
+    <div class="col-4 content">
+      <div class="mb-3">
+        <h3>Name:</h3>
+        <span> {{ order.name }} </span>
+      </div>
+
+      <div class="mb-3">
+        <h3>Address:</h3>
+        <span> {{ order.address }} </span>
+      </div>
+
+      <div class="map">
+        <h4>Shipping Address:</h4>
+        <app-map [order]="order" [readonly]="true"></app-map>
+      </div>
+    </div>
+  </div>
+</div>
