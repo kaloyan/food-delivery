@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row header">
+    <div class="col">
+      <h1><i class="fa-solid fa-user"></i> User profile</h1>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!showForm">
+    <div class="row">
+      <div class="col">
+        <span class="label">Name: </span>
+        <span class="content"> {{ profile.name }} </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <span class="label">Address: </span>
+        <span class="content"> {{ profile.address }} </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <span class="label">Email: </span>
+        <span class="content"> {{ profile.email }} </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-primary" (click)="editProfile()">
+          Edit
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showForm">
+    <form
+      [formGroup]="editProfileForm"
+      (ngSubmit)="submit()"
+      [ngClass]="{
+        'was-validated':
+          (formControls.email.errors && submited) ||
+          (formControls.password.errors && submited),
+        'needs-validation': !submited
+      }"
+      novalidate
+    >
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-text" id="basic-addon1">
+                <i class="fa-solid fa-at"></i>
+              </span>
+
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                aria-describedby="emailHelp"
+                formControlName="email"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-primary" (click)="cancelEdit()">
+          Cancel
+        </button>
+        <button class="btn btn-primary" (click)="submit()">Save</button>
+      </div>
+    </div>
+  </ng-container>
+</div>

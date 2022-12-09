@@ -4,9 +4,14 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import { User } from '../shared/models/User';
-import { LOGIN_URL, REGISTER_URL } from '../shared/constants/urls';
+import {
+  LOGIN_URL,
+  REGISTER_URL,
+  UPDATE_PROFILE_URL,
+} from '../shared/constants/urls';
 import { ToastService } from './toast.service';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
+import { IUserProfile } from '../shared/interfaces/IUserProfile';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +64,10 @@ export class UserService {
         },
       })
     );
+  }
+
+  saveProfile(user: IUserProfile): Observable<IUserProfile> {
+    return this.http.post<IUserProfile>(UPDATE_PROFILE_URL, user);
   }
 
   private saveUser(user: User): void {
