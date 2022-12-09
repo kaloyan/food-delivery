@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from '../shared/models/Order';
 import {
+  MY_ORDERS_HISTORY_URL,
   MY_ORDERS_URL,
   ORDER_CREATE_URL,
   ORDER_PAY_URL,
@@ -21,6 +22,10 @@ export class OrderService {
 
   getMyOrders(): Observable<Order> {
     return this.http.get<Order>(MY_ORDERS_URL);
+  }
+
+  getMyOrdersHistory(): Observable<Order[]> {
+    return this.http.get<Order[]>(MY_ORDERS_HISTORY_URL);
   }
 
   pay(order: Order): Observable<string> {

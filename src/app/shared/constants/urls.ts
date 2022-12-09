@@ -13,9 +13,11 @@ export const POPULAR_FOODS_URL = BASE_URL + '/api/foods/popular';
 
 export const LOGIN_URL = BASE_URL + '/api/users/login';
 export const REGISTER_URL = BASE_URL + '/api/users/register';
+export const UPDATE_PROFILE_URL = BASE_URL + '/api/users/profile';
 
 export const ORDERS_URL = BASE_URL + '/api/orders';
 export const ORDER_CREATE_URL = BASE_URL + '/api/orders/create';
 export const MY_ORDERS_URL = BASE_URL + '/api/orders/my-orders';
+export const MY_ORDERS_HISTORY_URL = BASE_URL + '/api/orders/order-history';
 export const ORDER_PAY_URL = BASE_URL + '/api/orders/pay';
 export const ORDER_TRACK_URL = BASE_URL + '/api/orders/track/';
