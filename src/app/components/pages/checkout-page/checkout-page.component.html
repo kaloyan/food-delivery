@@ -10,8 +10,11 @@
       <app-order-items-list [order]="order"></app-order-items-list>
 
       <div class="row">
-        <div class="col">
-          <app-paypal-button [order]="order"></app-paypal-button>
+        <div class="col actions">
+          <button class="btn btn-success btn-lg" (click)="createOrder()">
+            <i class="fa-brands fa-paypal"></i>
+            Go To Payment
+          </button>
         </div>
       </div>
     </div>

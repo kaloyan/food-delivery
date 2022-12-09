@@ -7,7 +7,10 @@ import { FoodDetailsComponent } from './components/pages/food-details/food-detai
 import { FrontpageComponent } from './components/pages/frontpage/frontpage.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { OrderListComponent } from './components/pages/order-list/order-list.component';
 import { OrderTrackComponent } from './components/pages/order-track/order-track.component';
+import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 const routes: Routes = [
@@ -29,6 +32,21 @@ const routes: Routes = [
   {
     path: 'track/:orderId',
     component: OrderTrackComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-orders',
+    component: OrderListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'payment',
+    component: PaymentPageComponent,
     canActivate: [AuthGuard],
   },
 ];

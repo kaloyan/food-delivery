@@ -31,6 +31,9 @@ import { FrontpageComponent } from './components/pages/frontpage/frontpage.compo
 import { HeroComponent } from './components/partials/hero/hero.component';
 import { PopularDishesComponent } from './components/partials/popular-dishes/popular-dishes.component';
 import { FoodItemComponent } from './components/partials/food-item/food-item.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
+import { OrderListComponent } from './components/pages/order-list/order-list.component';
+import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { FoodItemComponent } from './components/partials/food-item/food-item.com
     HeroComponent,
     PopularDishesComponent,
     FoodItemComponent,
+    ProfileComponent,
+    OrderListComponent,
+    PaymentPageComponent,
   ],
   imports: [
     BrowserModule,

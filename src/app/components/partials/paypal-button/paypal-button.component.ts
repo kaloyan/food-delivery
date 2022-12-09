@@ -46,6 +46,7 @@ export class PaypalButtonComponent implements OnInit {
 
         onApprove: async (data: any, actions: any) => {
           const payment = await actions.order.capture();
+
           this.order.paymentId = payment.id;
           self.orderService.pay(this.order).subscribe({
             next: (orderId) => {
@@ -58,14 +59,16 @@ export class PaypalButtonComponent implements OnInit {
               );
             },
             error: (error) => {
-              this.toastService.showErrorToast('Error', 'Payment Save Failed.');
+              this.toastService.showErrorToast(
+                'Error',
+                'Payment Save Failed.' + error.message
+              );
             },
           });
         },
 
         onError: (error: any) => {
           this.toastService.showErrorToast('Error', 'Payment Failed!');
-          console.log(error);
         },
       })
       .render(this.paypalElement.nativeElement);

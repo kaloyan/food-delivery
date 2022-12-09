@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row header">
+  <div class="row header" *ngIf="order">
     <div class="col">
       <h1>Order #{{ order.id }}</h1>
     </div>
@@ -28,15 +28,22 @@
       </div>
     </div>
 
-    <div class="col-8">
+    <div class="col-8" *ngIf="order">
       <app-order-items-list [order]="order"></app-order-items-list>
 
-      <div class="buttons">
+      <div class="buttons" *ngIf="order.status != 'NEW'">
         <button class="btn btn-outline-primary btn-lg" (click)="print()">
           Print order
         </button>
         <button class="btn btn-primary btn-lg" routerLink="/">
           Continue shopping
+        </button>
+      </div>
+
+      <div class="buttons" *ngIf="order.status == 'NEW'">
+        <button class="btn btn-success btn-lg" routerLink="/checkout">
+          <i class="fa-solid fa-cart-shopping"></i>
+          Checkout
         </button>
       </div>
     </div>

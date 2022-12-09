@@ -8,15 +8,20 @@ import { Order } from 'src/app/shared/models/Order';
   templateUrl: './order-track.component.html',
   styleUrls: ['./order-track.component.scss'],
 })
-export class OrderTrackComponent {
+export class OrderTrackComponent implements OnInit {
   order!: Order;
 
-  constructor(activatedRoute: ActivatedRoute, orderService: OrderService) {
-    const params = activatedRoute.snapshot.params;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private orderService: OrderService
+  ) {}
+
+  ngOnInit(): void {
+    const params = this.activatedRoute.snapshot.params;
 
     if (!params.orderId) return;
 
-    orderService.trackById(params.orderId).subscribe({
+    this.orderService.trackById(params.orderId).subscribe({
       next: (order) => {
         this.order = order;
       },
