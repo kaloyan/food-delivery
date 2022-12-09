@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { FoodService } from 'src/app/services/food.service';
@@ -10,7 +10,7 @@ import { IMAGES_HOST } from '../../../shared/constants/urls';
   templateUrl: './food-details.component.html',
   styleUrls: ['./food-details.component.scss'],
 })
-export class FoodDetailsComponent implements OnInit {
+export class FoodDetailsComponent {
   food!: Food;
   imageHost = IMAGES_HOST;
 
@@ -28,8 +28,6 @@ export class FoodDetailsComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit(): void {}
 
   addToCart() {
     this.cartService.addToCart(this.food);

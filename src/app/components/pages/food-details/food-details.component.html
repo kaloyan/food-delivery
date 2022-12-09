@@ -5,32 +5,45 @@
     resetText="Back to Homepage"
   ></app-not-found>
 
-  <div class="card my-5" *ngIf="food">
-    <div class="row g-0">
-      <div class="col-md-6">
-        <img
-          [src]="imageHost + food.imageUrl"
-          class="img-fluid rounded-start"
-          [alt]="food.name"
-        />
+  <ng-container *ngIf="food">
+    <div class="row content">
+      <div class="col-md-6 picture">
+        <img [src]="imageHost + food.imageUrl" [alt]="food.name" />
       </div>
+
       <div class="col-md-6">
         <div class="card-body">
           <h1 class="card-title">{{ food.name }}</h1>
 
-          <button class="btn btn-outline-primary favorite-wrap">
-            <span class="favorite {{ food.favorite ? '' : 'not' }}">
-              <i class="fa-solid fa-heart"></i>
-            </span>
-          </button>
+          <div class="favorite-wrap">
+            <button class="btn btn-outline-primary">
+              <ng-container *ngIf="food.favorite">
+                <span class="favorite">
+                  <i class="fa-solid fa-heart"></i>
+                </span>
+                Remove from favorites
+              </ng-container>
+
+              <ng-container *ngIf="!food.favorite">
+                <span class="favorite not">
+                  <i class="fa-solid fa-heart"></i>
+                </span>
+                Add to favorites
+              </ng-container>
+            </button>
+          </div>
 
           <p class="card-text">
+            <span class="title"
+              ><i class="fa-solid fa-earth-americas"></i> Origin:
+            </span>
             <span *ngFor="let origin of food.origins" class="origins">
               {{ origin }}
             </span>
           </p>
 
           <p class="card-text">
+            <span class="title"><i class="fa-solid fa-tags"></i> Tags: </span>
             <a
               *ngFor="let tag of food.tags"
               class="tags"
@@ -40,19 +53,38 @@
             </a>
           </p>
 
-          <p class="card-text">
+          <p>
+            <i class="fa-solid fa-clock"></i>
             Time to cook about {{ food.cookTime }} minutes.
           </p>
 
-          <p class="card-text">
+          <p class="price">
             <span class="price">Price: {{ food.price | currency }}</span>
           </p>
 
-          <button (click)="addToCart()" class="btn btn-primary">
+          <div>
+            <span class="title">Ingredients:</span>
+            {{ food.ingredients.join(", ") }}
+          </div>
+
+          <button (click)="addToCart()" class="btn btn-primary btn-lg action">
+            <i class="fa-solid fa-cart-shopping"></i>
             Add To Cart
           </button>
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="col description">
+        <div>
+          <span class="title">Description:</span>
+
+          <p>
+            {{ food.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>
