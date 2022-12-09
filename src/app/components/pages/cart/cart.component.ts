@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Cart } from 'src/app/shared/models/Cart';
 import { CartItem } from 'src/app/shared/models/CartItem';
+import { Order } from 'src/app/shared/models/Order';
 import { IMAGES_HOST } from '../../../shared/constants/urls';
 
 @Component({
@@ -10,6 +11,7 @@ import { IMAGES_HOST } from '../../../shared/constants/urls';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
+  order: Order = new Order();
   cart!: Cart;
   imageHost = IMAGES_HOST;
 

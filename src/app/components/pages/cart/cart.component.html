@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row header">
     <div class="col">
       <h1>Shopping Cart</h1>
     </div>
@@ -11,7 +11,7 @@
     resetText="Go to Homepage"
   ></app-not-found>
 
-  <div class="row">
+  <div class="row content">
     <div class="col-8">
       <ul class="list-group list-group-flush">
         <li class="list-group-item" *ngFor="let item of cart.items">
@@ -72,8 +72,17 @@
       <h2>
         Price: <span> {{ cart.totalPrice | currency }} </span>
       </h2>
+    </div>
+  </div>
 
-      <button class="btn btn-primary" routerLink="/checkout">Checkout</button>
+  <hr />
+
+  <div class="row actions" *ngIf="cart && cart.items.length > 0">
+    <div class="col">
+      <button class="btn btn-success btn-lg" routerLink="/checkout">
+        <i class="fa-solid fa-cart-shopping"></i>
+        Checkout
+      </button>
     </div>
   </div>
 </div>
