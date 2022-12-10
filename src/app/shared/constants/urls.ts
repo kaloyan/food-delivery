@@ -12,6 +12,7 @@ export const FOOD_BY_ID_URL = BASE_URL + '/api/foods/';
 export const POPULAR_FOODS_URL = BASE_URL + '/api/foods/popular';
 
 export const LOGIN_URL = BASE_URL + '/api/users/login';
+export const LOGOUT_URL = BASE_URL + '/api/users/logout';
 export const REGISTER_URL = BASE_URL + '/api/users/register';
 export const UPDATE_PROFILE_URL = BASE_URL + '/api/users/profile';
 

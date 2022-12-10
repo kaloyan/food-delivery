@@ -6,12 +6,14 @@ import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import { User } from '../shared/models/User';
 import {
   LOGIN_URL,
+  LOGOUT_URL,
   REGISTER_URL,
   UPDATE_PROFILE_URL,
 } from '../shared/constants/urls';
 import { ToastService } from './toast.service';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { IUserProfile } from '../shared/interfaces/IUserProfile';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +22,11 @@ export class UserService {
   private userSubject = new BehaviorSubject<User>(this.getUser());
   public userObservable: Observable<User>;
 
-  constructor(private http: HttpClient, private toastService: ToastService) {
+  constructor(
+    private http: HttpClient,
+    private toastService: ToastService,
+    private router: Router
+  ) {
     this.userObservable = this.userSubject.asObservable();
   }
 
@@ -43,9 +49,27 @@ export class UserService {
   }
 
   logout() {
+    // first remove user object and delete user object from localStorage
     this.userSubject.next(new User());
     localStorage.removeItem('_user');
-    window.location.reload();
+
+    // next - remove JWT cookie token
+    this.http.get<string>(LOGOUT_URL).pipe(
+      tap({
+        next: () => {
+          // last reload page
+          window.location.reload();
+        },
+        error: (error) => {
+          this.toastService.showErrorToast('Error', error.message);
+          // reload page
+          window.location.reload();
+        },
+      })
+    );
+
+    // redirect to home
+    this.router.navigateByUrl('/');
   }
 
   register(user: IUserRegister): Observable<User> {
