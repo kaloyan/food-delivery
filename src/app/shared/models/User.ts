@@ -1,3 +1,5 @@
+import { LatLng } from 'leaflet';
+
 export class User {
   id!: string;
   name!: string;
@@ -5,4 +7,5 @@ export class User {
   token!: string;
   address!: string;
   isAdmin!: boolean;
+  latlng!: LatLng;
 }

@@ -3,6 +3,7 @@ import {
   ElementRef,
   Input,
   OnChanges,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import {
@@ -18,14 +19,16 @@ import {
   tileLayer,
 } from 'leaflet';
 import { LocationService } from 'src/app/services/location.service';
+import { UserService } from 'src/app/services/user.service';
 import { Order } from 'src/app/shared/models/Order';
+import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnChanges {
+export class MapComponent implements OnInit, OnChanges {
   private readonly DEFAULT_LATLONG: LatLngTuple = [13.75, 21.62];
   private readonly ZOOM_LEVEL = 16;
   private readonly MARKER_ICON = icon({
@@ -33,6 +36,7 @@ export class MapComponent implements OnChanges {
     iconSize: [42, 42],
     iconAnchor: [21, 42],
   });
+  user!: User;
 
   @Input()
   order!: Order;
@@ -45,7 +49,19 @@ export class MapComponent implements OnChanges {
   map!: Map;
   currentMarker!: Marker;
 
-  constructor(private locationService: LocationService) {}
+  constructor(
+    private locationService: LocationService,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    this.user = this.userService.currentUser;
+
+    if (this.user.latlng) {
+      this.map.setView(this.user.latlng, this.ZOOM_LEVEL);
+      this.setMarker(this.user.latlng);
+    }
+  }
 
   ngOnChanges(): void {
     if (!this.order) return;
@@ -111,6 +127,10 @@ export class MapComponent implements OnChanges {
     latlng.lng = parseFloat(latlng.lng.toFixed(8));
 
     this.order.latlong = latlng;
+    this.user.latlng = latlng;
+    this.userService.saveLocation(latlng).subscribe({
+      next: () => {},
+    });
   }
 
   findLocation() {
