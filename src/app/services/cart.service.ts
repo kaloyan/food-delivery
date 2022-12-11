@@ -3,15 +3,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from '../shared/models/Cart';
 import { CartItem } from '../shared/models/CartItem';
 import { Food } from '../shared/models/Food';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart: Cart = this.loadCart();
+  private cart: Cart = this.storageService.getCart();
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
 
-  constructor() {}
+  constructor(private storageService: StorageService) {}
 
   addToCart(food: Food): void {
     let cartItem = this.cart.items.find((item) => item.food.id == food.id);
@@ -70,16 +71,9 @@ export class CartService {
     );
 
     // next: convert cart to json string and save to localstorage
-    const cartStr = JSON.stringify(this.cart);
-    localStorage.setItem('_cart', cartStr);
+    this.storageService.saveCart(this.cart);
 
     // notify all listeners of the observable
     this.cartSubject.next(this.cart);
-  }
-
-  private loadCart(): Cart {
-    const cartStr = localStorage.getItem('_cart');
-
-    return cartStr ? JSON.parse(cartStr) : new Cart();
   }
 }

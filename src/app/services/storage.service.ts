@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LatLng } from 'leaflet';
+import { Cart } from '../shared/models/Cart';
 import { User } from '../shared/models/User';
 
 @Injectable({
@@ -24,6 +25,24 @@ export class StorageService {
 
   removeUser(): void {
     this.removeItem('_user');
+  }
+
+  getCart(): Cart {
+    const cart = this.getItem('_cart');
+
+    if (cart) {
+      return cart as Cart;
+    } else {
+      return new Cart();
+    }
+  }
+
+  saveCart(cart: Cart): void {
+    this.setItem('_cart', cart);
+  }
+
+  removeCart(): void {
+    this.removeItem('_cart');
   }
 
   getLocation(): LatLng | null {
