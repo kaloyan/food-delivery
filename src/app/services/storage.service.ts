@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LatLng } from 'leaflet';
 import { User } from '../shared/models/User';
 
 @Injectable({
@@ -23,6 +24,24 @@ export class StorageService {
 
   removeUser(): void {
     this.removeItem('_user');
+  }
+
+  getLocation(): LatLng | null {
+    const location = this.getItem('_location');
+
+    if (location) {
+      return location as LatLng;
+    } else {
+      return null;
+    }
+  }
+
+  saveLocation(location: LatLng): void {
+    this.setItem('_location', location);
+  }
+
+  removeLocation(): void {
+    this.removeItem('_location');
   }
 
   private getItem(key: string) {

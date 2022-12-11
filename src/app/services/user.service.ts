@@ -8,14 +8,12 @@ import {
   LOGIN_URL,
   LOGOUT_URL,
   REGISTER_URL,
-  SAVE_LOCATION_URL,
   UPDATE_PROFILE_URL,
 } from '../shared/constants/urls';
 import { ToastService } from './toast.service';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { IUserProfile } from '../shared/interfaces/IUserProfile';
 import { Router } from '@angular/router';
-import { LatLng } from 'leaflet';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -98,10 +96,6 @@ export class UserService {
 
   saveProfile(user: IUserProfile): Observable<IUserProfile> {
     return this.http.post<IUserProfile>(UPDATE_PROFILE_URL, user);
-  }
-
-  saveLocation(latlng: LatLng): Observable<LatLng> {
-    return this.http.post<LatLng>(SAVE_LOCATION_URL, latlng);
   }
 
   public get currentUser(): User {

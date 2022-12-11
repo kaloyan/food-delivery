@@ -15,7 +15,6 @@ export const LOGIN_URL = BASE_URL + '/api/users/login';
 export const LOGOUT_URL = BASE_URL + '/api/users/logout';
 export const REGISTER_URL = BASE_URL + '/api/users/register';
 export const UPDATE_PROFILE_URL = BASE_URL + '/api/users/profile';
-export const SAVE_LOCATION_URL = BASE_URL + '/api/users/location';
 
 export const ORDERS_URL = BASE_URL + '/api/orders';
 export const ORDER_CREATE_URL = BASE_URL + '/api/orders/create';

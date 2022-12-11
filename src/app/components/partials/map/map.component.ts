@@ -19,9 +19,8 @@ import {
   tileLayer,
 } from 'leaflet';
 import { LocationService } from 'src/app/services/location.service';
-import { UserService } from 'src/app/services/user.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { Order } from 'src/app/shared/models/Order';
-import { User } from 'src/app/shared/models/User';
 
 @Component({
   selector: 'app-map',
@@ -36,7 +35,6 @@ export class MapComponent implements OnInit, OnChanges {
     iconSize: [42, 42],
     iconAnchor: [21, 42],
   });
-  user!: User;
 
   @Input()
   order!: Order;
@@ -51,15 +49,15 @@ export class MapComponent implements OnInit, OnChanges {
 
   constructor(
     private locationService: LocationService,
-    private userService: UserService
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
-    this.user = this.userService.currentUser;
+    const location: LatLng | null = this.storageService.getLocation();
 
-    if (this.user.latlng) {
-      this.map.setView(this.user.latlng, this.ZOOM_LEVEL);
-      this.setMarker(this.user.latlng);
+    if (location) {
+      this.map.setView(location, this.ZOOM_LEVEL);
+      this.setMarker(location);
     }
   }
 
@@ -127,10 +125,7 @@ export class MapComponent implements OnInit, OnChanges {
     latlng.lng = parseFloat(latlng.lng.toFixed(8));
 
     this.order.latlong = latlng;
-    this.user.latlng = latlng;
-    this.userService.saveLocation(latlng).subscribe({
-      next: () => {},
-    });
+    this.storageService.saveLocation(latlng);
   }
 
   findLocation() {
