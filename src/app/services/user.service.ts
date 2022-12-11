@@ -16,17 +16,21 @@ import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { IUserProfile } from '../shared/interfaces/IUserProfile';
 import { Router } from '@angular/router';
 import { LatLng } from 'leaflet';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private userSubject = new BehaviorSubject<User>(this.getUser());
+  private userSubject = new BehaviorSubject<User>(
+    this.storageService.getUser()
+  );
   public userObservable: Observable<User>;
 
   constructor(
     private http: HttpClient,
     private toastService: ToastService,
+    private storageService: StorageService,
     private router: Router
   ) {
     this.userObservable = this.userSubject.asObservable();
@@ -36,7 +40,7 @@ export class UserService {
     return this.http.post<User>(LOGIN_URL, userLogin).pipe(
       tap({
         next: (user) => {
-          this.saveUser(user);
+          this.storageService.saveUser(user);
           this.userSubject.next(user);
           this.toastService.showSuccessToast(
             'Login Successful',
@@ -53,7 +57,7 @@ export class UserService {
   logout() {
     // first remove user object and delete user object from localStorage
     this.userSubject.next(new User());
-    localStorage.removeItem('_user');
+    this.storageService.removeUser();
 
     // next - remove JWT cookie token
     this.http.get<string>(LOGOUT_URL).pipe(
@@ -78,7 +82,7 @@ export class UserService {
     return this.http.post<User>(REGISTER_URL, user).pipe(
       tap({
         next: (user) => {
-          this.saveUser(user);
+          this.storageService.saveUser(user);
           this.userSubject.next(user);
           this.toastService.showSuccessToast(
             'Registration Successful',
@@ -98,20 +102,6 @@ export class UserService {
 
   saveLocation(latlng: LatLng): Observable<LatLng> {
     return this.http.post<LatLng>(SAVE_LOCATION_URL, latlng);
-  }
-
-  private saveUser(user: User): void {
-    localStorage.setItem('_user', JSON.stringify(user));
-  }
-
-  private getUser(): User {
-    const userString = localStorage.getItem('_user');
-
-    if (userString) {
-      return JSON.parse(userString) as User;
-    } else {
-      return new User();
-    }
   }
 
   public get currentUser(): User {
