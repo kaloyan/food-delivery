@@ -33,14 +33,14 @@ export class PaginationComponent implements OnChanges {
       } else if (params['tag']) {
         this.pagerPrefix = `/tag/${params['tag']}/page/`;
       } else {
-        this.pagerPrefix = '/page/';
+        this.pagerPrefix = '/foods/page/';
       }
     });
   }
 
   ngOnChanges(): void {
     this.showPrev = this.currentPage > 1;
-    this.showNext = this.slice.start < this.itemsCount - this.slice.count;
+    this.showNext = (this.slice.start + 1) * PAGE_SIZE < this.itemsCount;
 
     this.nextPage = Number(this.currentPage) + 1;
     this.prevPage = Number(this.currentPage) - 1;
@@ -62,10 +62,5 @@ export class PaginationComponent implements OnChanges {
         this.pageItems = this.pageItems.slice(0, 7);
       }
     }
-
-    // console.log(this.itemsCount);
-    // console.log(this.slice);
-    // console.log(this.currentPage);
-    // console.log(this.pageCount);
   }
 }

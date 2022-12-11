@@ -23,7 +23,7 @@ export class FoodService {
     let url = FOODS_URL;
 
     if (pageNum > 0) {
-      url += '/page/' + pageNum;
+      url += '/page/' + Number(pageNum - 1);
     }
 
     return this.http.get<IFoodResults>(url);
@@ -33,7 +33,7 @@ export class FoodService {
     let url = SEARCH_URL + query;
 
     if (num > 0) {
-      url += '/page/' + num;
+      url += '/page/' + Number(num - 1);
     }
 
     return this.http.get<IFoodResults>(url);
@@ -47,7 +47,7 @@ export class FoodService {
     let url = FOOD_BY_TAG_URL + tag;
 
     if (num > 0) {
-      url += '/page/' + num;
+      url += '/page/' + Number(num - 1);
     }
 
     if (tag === 'All') {

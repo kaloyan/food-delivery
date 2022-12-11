@@ -21,7 +21,7 @@ export class SearchboxComponent implements OnInit {
 
   doSearch(query: string): void {
     if (query) {
-      this.router.navigateByUrl(`/search/${query}`);
+      this.router.navigateByUrl(`/search/${query}/page/1`);
     }
   }
 

@@ -20,6 +20,6 @@ export class TagsComponent implements OnInit {
   ngOnInit(): void {}
 
   getTag(tag: string) {
-    this.router.navigateByUrl(`/tag/${tag}`);
+    this.router.navigateByUrl(`/tag/${tag}/page/1`);
   }
 }

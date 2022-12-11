@@ -15,7 +15,8 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 
 const routes: Routes = [
   { path: '', component: FrontpageComponent },
-  { path: 'page/:num', component: HomeComponent },
+  { path: 'foods', component: HomeComponent },
+  { path: 'foods/page/:num', component: HomeComponent },
   { path: 'search/:query', component: HomeComponent },
   { path: 'search/:query/page/:num', component: HomeComponent },
   { path: 'tag/:tag', component: HomeComponent },
