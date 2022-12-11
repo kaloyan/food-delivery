@@ -1,85 +1,76 @@
 <div class="container">
   <div class="row header">
     <div class="col">
-      <h1><i class="fa-solid fa-user"></i> User profile</h1>
+      <h1><i class="fa-solid fa-user"></i> My Profile</h1>
     </div>
   </div>
 
-  <ng-container *ngIf="!showForm">
+  <form
+    [formGroup]="editProfileForm"
+    (ngSubmit)="submit()"
+    [ngClass]="{
+      'was-validated':
+        (formControls.namerrors && submited) ||
+        (formControls.address.errors && submited),
+      'needs-validation': !submited
+    }"
+    novalidate
+  >
     <div class="row">
-      <div class="col">
-        <span class="label">Name: </span>
-        <span class="content"> {{ profile.name }} </span>
-      </div>
-    </div>
+      <div class="col content">
+        <div>
+          <span class="label">Email: </span>
+          <span>
+            {{ profile.email }}
+          </span>
+          <span class="disabled">(cannot be changed)</span>
+        </div>
 
-    <div class="row">
-      <div class="col">
-        <span class="label">Address: </span>
-        <span class="content"> {{ profile.address }} </span>
-      </div>
-    </div>
+        <div>
+          <span class="label">Name: </span>
 
-    <div class="row">
-      <div class="col">
-        <span class="label">Email: </span>
-        <span class="content"> {{ profile.email }} </span>
-      </div>
-    </div>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="Name"
+            formControlName="name"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid name.</div>
+        </div>
 
-    <div class="row">
-      <div class="col">
-        <button class="btn btn-outline-primary" (click)="editProfile()">
-          Edit
-        </button>
-      </div>
-    </div>
-  </ng-container>
+        <div>
+          <span class="label">Address: </span>
 
-  <ng-container *ngIf="showForm">
-    <form
-      [formGroup]="editProfileForm"
-      (ngSubmit)="submit()"
-      [ngClass]="{
-        'was-validated':
-          (formControls.email.errors && submited) ||
-          (formControls.password.errors && submited),
-        'needs-validation': !submited
-      }"
-      novalidate
-    >
-      <div class="row">
-        <div class="col">
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <div class="input-group input-group-lg">
-              <span class="input-group-text" id="basic-addon1">
-                <i class="fa-solid fa-at"></i>
-              </span>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            aria-describedby="Address"
+            formControlName="address"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please type your aaddress.</div>
+        </div>
 
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                aria-describedby="emailHelp"
-                formControlName="email"
-                required
-              />
-              <div class="valid-feedback">Looks good!</div>
-              <div class="invalid-feedback">Please provide a valid email.</div>
-            </div>
-          </div>
+        <div *ngIf="editProfileForm.dirty">
+          <button
+            class="btn btn-primary btn-lg"
+            type="button"
+            (click)="submit()"
+          >
+            Save Changes
+          </button>
         </div>
       </div>
-    </form>
 
-    <div class="row">
-      <div class="col">
-        <button class="btn btn-outline-primary" (click)="cancelEdit()">
-          Cancel
-        </button>
-        <button class="btn btn-primary" (click)="submit()">Save</button>
+      <div class="col content">
+        <h3>Delivery Address:</h3>
+        <app-map [order]="order"></app-map>
       </div>
     </div>
-  </ng-container>
+  </form>
 </div>

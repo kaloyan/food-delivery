@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
+import { Order } from 'src/app/shared/models/Order';
 import { User } from 'src/app/shared/models/User';
 
 @Component({
@@ -9,22 +10,22 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnChanges {
   profile!: User;
-  showForm: boolean = false;
   editProfileForm!: FormGroup;
   submited = false;
+  order!: Order;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastService: ToastService
-  ) {}
+  ) {
+    this.order = new Order();
+  }
 
   ngOnInit(): void {
     this.profile = this.userService.currentUser;
-
-    console.log(this.profile);
 
     this.editProfileForm = this.formBuilder.group({
       name: [this.profile.name, [Validators.required, Validators.minLength(5)]],
@@ -34,15 +35,12 @@ export class ProfileComponent implements OnInit {
         this.profile.address,
         [Validators.required, Validators.minLength(7)],
       ],
+      latlng: [this.profile.latlng],
     });
   }
 
-  editProfile() {
-    this.showForm = true;
-  }
-
-  cancelEdit() {
-    this.showForm = false;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
   }
 
   get formControls() {
@@ -59,10 +57,7 @@ export class ProfileComponent implements OnInit {
         email: this.formControls.email.value,
         password: this.formControls.password.value,
         address: this.formControls.address.value,
-        latlng: {
-          lat: '',
-          lng: '',
-        },
+        latlng: this.profile.latlng,
       })
       .subscribe({
         next: () => {
