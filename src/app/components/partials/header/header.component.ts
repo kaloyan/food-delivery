@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { UserService } from 'src/app/services/user.service';
@@ -10,10 +10,10 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   cartItemsCount = 0;
   user!: User;
-  favorites!: Food[];
+  favorites: Food[] = [];
 
   constructor(
     cartService: CartService,
@@ -31,6 +31,10 @@ export class HeaderComponent {
         this.favorites = favs;
       },
     });
+  }
+
+  ngOnInit(): void {
+    this.favorites = [];
   }
 
   logout() {
