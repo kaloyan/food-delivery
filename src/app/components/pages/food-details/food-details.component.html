@@ -16,21 +16,29 @@
           <h1 class="card-title">{{ food.name }}</h1>
 
           <div class="favorite-wrap">
-            <button class="btn btn-outline-primary">
-              <ng-container *ngIf="food.favorite">
+            <ng-container *ngIf="isFavorite">
+              <button
+                class="btn btn-outline-primary"
+                (click)="removeFromFavorites()"
+              >
                 <span class="favorite">
-                  <i class="fa-solid fa-heart"></i>
+                  <i class="fa-solid fa-star"></i>
                 </span>
                 Remove from favorites
-              </ng-container>
+              </button>
+            </ng-container>
 
-              <ng-container *ngIf="!food.favorite">
+            <ng-container *ngIf="!isFavorite">
+              <button
+                class="btn btn-outline-primary"
+                (click)="addToFavorites()"
+              >
                 <span class="favorite not">
-                  <i class="fa-solid fa-heart"></i>
+                  <i class="fa-solid fa-star"></i>
                 </span>
                 Add to favorites
-              </ng-container>
-            </button>
+              </button>
+            </ng-container>
           </div>
 
           <p class="card-text">
