@@ -1,0 +1,18 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+
+.header {
+  margin: 4rem auto 1rem auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content {
+  margin-bottom: 4rem;
+}

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row header">
+    <div class="col">
+      <h1>My Favorites</h1>
+    </div>
+  </div>
+
+  <div class="row content">
+    <div class="col">
+      <ul class="my-4">
+        <li *ngFor="let food of foods" class="border-light">
+          <app-food-item [food]="food"></app-food-item>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
