@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LatLng } from 'leaflet';
 import { Cart } from '../shared/models/Cart';
+import { Food } from '../shared/models/Food';
 import { User } from '../shared/models/User';
 
 @Injectable({
@@ -61,6 +62,14 @@ export class StorageService {
 
   removeLocation(): void {
     this.removeItem('_location');
+  }
+
+  getFavorites() {
+    return this.getItem('_favorites');
+  }
+
+  saveFavorites(foods: Food[]): void {
+    this.setItem('_favorites', foods);
   }
 
   private getItem(key: string) {
