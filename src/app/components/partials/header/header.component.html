@@ -41,6 +41,21 @@
             >
           </li>
 
+          <li class="nav-item" *ngIf="favorites.length > 0">
+            <a
+              class="nav-link text-light"
+              routerLink="/favorites"
+              aria-current="favorites"
+              href=""
+            >
+              <i class="fa-solid fa-star"></i>
+              Favorites
+              <span class="badge text-bg-primary">
+                {{ favorites.length }}
+              </span>
+            </a>
+          </li>
+
           <li *ngIf="!isLoggedIn" class="nav-item">
             <a
               class="nav-link text-light"

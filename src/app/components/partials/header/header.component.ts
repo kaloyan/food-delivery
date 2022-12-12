@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { FavoritesService } from 'src/app/services/favorites.service';
 import { UserService } from 'src/app/services/user.service';
+import { Food } from 'src/app/shared/models/Food';
 import { User } from 'src/app/shared/models/User';
 
 @Component({
@@ -8,19 +10,28 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   cartItemsCount = 0;
   user!: User;
+  favorites!: Food[];
 
-  constructor(cartService: CartService, private userService: UserService) {
+  constructor(
+    cartService: CartService,
+    private userService: UserService,
+    favoritesService: FavoritesService
+  ) {
     cartService.getCartObservable().subscribe((cart) => {
       this.cartItemsCount = cart.totalCount;
     });
 
     userService.userObservable.subscribe((user) => (this.user = user));
-  }
 
-  ngOnInit(): void {}
+    favoritesService.favoritesObservable.subscribe({
+      next: (favs) => {
+        this.favorites = favs;
+      },
+    });
+  }
 
   logout() {
     this.userService.logout();

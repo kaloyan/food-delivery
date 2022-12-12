@@ -8,7 +8,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ food.name }}</h5>
       <span class="favorite {{ food.favorite ? '' : 'not' }}">
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-star"></i>
       </span>
 
       <span *ngFor="let origin of food.origins" class="origins">

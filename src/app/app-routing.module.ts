@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { FavoritesComponent } from './components/pages/favorites/favorites.component';
 import { FoodDetailsComponent } from './components/pages/food-details/food-details.component';
 import { FrontpageComponent } from './components/pages/frontpage/frontpage.component';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
+  { path: 'favorites', component: FavoritesComponent },
   {
     path: 'checkout',
     component: CheckoutPageComponent,

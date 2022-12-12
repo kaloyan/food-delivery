@@ -34,6 +34,7 @@ import { FoodItemComponent } from './components/partials/food-item/food-item.com
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { OrderListComponent } from './components/pages/order-list/order-list.component';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
+import { FavoritesComponent } from './components/pages/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
     ProfileComponent,
     OrderListComponent,
     PaymentPageComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,

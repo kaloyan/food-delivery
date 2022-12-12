@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
@@ -10,7 +10,7 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit, OnChanges {
+export class ProfileComponent implements OnInit {
   profile!: User;
   editProfileForm!: FormGroup;
   submited = false;
@@ -37,10 +37,6 @@ export class ProfileComponent implements OnInit, OnChanges {
       ],
       latlng: [this.profile.latlng],
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
   }
 
   get formControls() {
