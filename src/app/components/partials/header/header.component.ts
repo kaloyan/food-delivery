@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     cartService: CartService,
     private userService: UserService,
-    favoritesService: FavoritesService
+    private favoritesService: FavoritesService
   ) {
     cartService.getCartObservable().subscribe((cart) => {
       this.cartItemsCount = cart.totalCount;
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.favorites = [];
+    this.favorites = this.favoritesService.getAll();
   }
 
   logout() {
