@@ -5,7 +5,13 @@
     </div>
   </div>
 
-  <div class="row">
+  <app-not-found
+    [isVisible]="myOrders.length == 0"
+    message="No orders yet"
+    resetText="Go to Homepage"
+  ></app-not-found>
+
+  <div class="row" *ngIf="myOrders.length > 0">
     <div class="col">
       <table class="table">
         <thead>
