@@ -8,6 +8,7 @@ import {
   POPULAR_FOODS_URL,
   SEARCH_URL,
   TAGS_URL,
+  UPDATE_FOOD_URL,
 } from '../shared/constants/urls';
 import { Food } from '../shared/models/Food';
 import { Tag } from '../shared/models/Tag';
@@ -63,5 +64,9 @@ export class FoodService {
 
   getPopularDishes(): Observable<Food[]> {
     return this.http.get<Food[]>(POPULAR_FOODS_URL);
+  }
+
+  updateFood(food: any): Observable<Food> {
+    return this.http.post<Food>(UPDATE_FOOD_URL, food);
   }
 }

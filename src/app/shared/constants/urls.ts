@@ -10,6 +10,7 @@ export const SEARCH_URL = BASE_URL + '/api/foods/search/';
 export const FOOD_BY_TAG_URL = BASE_URL + '/api/foods/tag/';
 export const FOOD_BY_ID_URL = BASE_URL + '/api/foods/';
 export const POPULAR_FOODS_URL = BASE_URL + '/api/foods/popular';
+export const UPDATE_FOOD_URL = BASE_URL + '/api/foods/update';
 
 export const LOGIN_URL = BASE_URL + '/api/users/login';
 export const LOGOUT_URL = BASE_URL + '/api/users/logout';
