@@ -36,12 +36,17 @@
 .picture img {
   max-width: 500px;
   border-radius: 7px;
+  margin-bottom: 2rem;
 }
 
 .description {
   padding: 2rem;
   line-height: 1.7;
   font-size: 1.1rem;
+}
+
+.description p {
+  white-space: pre-wrap;
 }
 
 .title {
@@ -58,4 +63,27 @@
 
 .action {
   margin-top: 1.1rem;
+}
+
+.edit-btn {
+  margin-right: 1rem;
+}
+.edit-description {
+  height: 20rem;
+}
+
+.ingredients {
+  height: 6rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+form input,
+form textarea {
+  font-size: 1.2rem;
 }

@@ -5,10 +5,16 @@
     resetText="Back to Homepage"
   ></app-not-found>
 
-  <ng-container *ngIf="food">
+  <ng-container *ngIf="food && !showForm">
     <div class="row content">
-      <div class="col-md-6 picture">
-        <img [src]="imageHost + food.imageUrl" [alt]="food.name" />
+      <div class="col-12 col-lg-6 picture">
+        <picture>
+          <img
+            [src]="imageHost + food.imageUrl"
+            class="img-fluid img-thumbnail picture"
+            [alt]="food.name"
+          />
+        </picture>
       </div>
 
       <div class="col-md-6">
@@ -16,6 +22,14 @@
           <h1 class="card-title">{{ food.name }}</h1>
 
           <div class="favorite-wrap">
+            <button
+              class="btn btn-primary btn-lg edit-btn"
+              *ngIf="currentUser.isAdmin"
+              (click)="showEditForm()"
+            >
+              Edit
+            </button>
+
             <ng-container *ngIf="isFavorite">
               <button
                 class="btn btn-outline-primary"
@@ -94,5 +108,143 @@
         </div>
       </div>
     </div>
+  </ng-container>
+
+  <ng-container *ngIf="food && showForm">
+    <form
+      [formGroup]="editForm"
+      (ngSubmit)="saveForm()"
+      [ngClass]="{
+        'was-validated':
+          (formControls.name.errors && submited) ||
+          (formControls.origins.errors && submited) ||
+          (formControls.tags.errors && submited) ||
+          (formControls.cookTime.errors && submited) ||
+          (formControls.price.errors && submited) ||
+          (formControls.ingredients.errors && submited) ||
+          (formControls.description.errors && submited),
+        'needs-validation': !submited
+      }"
+      novalidate
+    >
+      <div class="row content">
+        <div class="col-12 col-lg-6 picture">
+          <img [src]="imageHost + food.imageUrl" [alt]="food.name" />
+        </div>
+
+        <div class="col-md-6">
+          <div class="card-body">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Food Name"
+                formControlName="name"
+                required
+              />
+              <label for="floatingInput">Food Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Origins"
+                formControlName="origins"
+                required
+              />
+              <label for="floatingInput">Origins</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Tags"
+                formControlName="tags"
+                required
+              />
+              <label for="floatingInput">Tags</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Time to cook about (minutes)"
+                formControlName="cookTime"
+                required
+              />
+              <label for="floatingInput">Time to cook about (minutes)</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Price"
+                formControlName="price"
+                required
+              />
+              <label for="floatingInput">Price</label>
+            </div>
+
+            <div class="form-floating">
+              <textarea
+                class="form-control edit-description ingredients"
+                placeholder="Ingredients"
+                id="ingredientsTextarea"
+                formControlName="ingredients"
+                required
+              >
+              </textarea>
+              <label for="ingredientsTextarea">Ingredients</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col description">
+          <div>
+            <div class="form-floating">
+              <textarea
+                class="form-control edit-description"
+                placeholder="Food description"
+                id="floatingTextarea"
+                formControlName="description"
+                required
+              >
+              </textarea>
+              <label for="floatingTextarea">Food description:</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col controls">
+          <button
+            class="btn btn-outline-primary btn-lg"
+            type="button"
+            (click)="cancelEdit()"
+          >
+            Cancel
+          </button>
+          <button
+            class="btn btn-primary btn-lg"
+            type="button"
+            (click)="saveForm()"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
   </ng-container>
 </div>
