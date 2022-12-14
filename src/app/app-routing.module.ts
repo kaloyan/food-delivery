@@ -52,6 +52,10 @@ const routes: Routes = [
     component: PaymentPageComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: '**',
+    redirectTo: '/',
+  },
 ];
 
 @NgModule({
