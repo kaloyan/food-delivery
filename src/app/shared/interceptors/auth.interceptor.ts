@@ -23,6 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
         setHeaders: {
           access_token: user.token,
         },
+        // withCredentials: true,
       });
     }
 
